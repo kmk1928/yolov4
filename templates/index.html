@@ -1,0 +1,25 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>이미지 분석</title>
+</head>
+<body>
+    <h1>이미지 분석</h1>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="image">
+        <input type="submit" value="분석">
+    </form>
+    {% if image_path %}
+        <img src="{{ image_path }}" alt="Uploaded Image">
+        {% if results %}
+            <h2>분석 결과:</h2>
+            <ul>
+                {% for result in results %}
+                    <li>{{ result }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endif %}
+</body>
+</html>
